@@ -1,0 +1,25 @@
+<resources>
+    <!--Text Used in Activity_Main.xml-->
+    <string name="app_name">MyQuizApp</string>
+    <string name="Question_1_Heading">Question 1</string>
+    <string name="Question_2_Heading">Question 2</string>
+    <string name="Question_3_Heading">Question 3</string>
+    <string name="Question_4_Heading">Question 4</string>
+    <string name="Question_1_Body">Which of the following are languages supported by Android Studio? (Check all that apply)</string>
+    <string name="Question_2_Body">True or False. Android is an open sourced operating system.</string>
+    <string name="Question_3_Body">Briefly, describe what you think of the Android Basics Course? (This is your opinion!) </string>
+    <string name="Question_4_Body">What is the worst part about being a developer?</string>
+    <string name="Question_1_Checkbox_1">Java</string>
+    <string name="Question_1_Checkbox_2">Kotlin</string>
+    <string name="Question_1_Checkbox_3">C#</string>
+    <string name="Question_1_Checkbox_4">Python</string>
+    <string name="Question_2_RadioButton_1">True</string>
+    <string name="Question_2_RadioButton_2">False</string>
+    <string name="Question_4_RadioButton_1">Nothing! Developing is fun!</string>
+    <string name="Question_4_RadioButton_2">Debugging</string>
+    <string name="Question_4_RadioButton_3">Reading Documentation</string>
+
+    <!--Text Used in MainActivity.java-->
+    <string name="Right">You are right!</string>
+    <string name="Wrong">You are wrong :*(</string>
+</resources>
