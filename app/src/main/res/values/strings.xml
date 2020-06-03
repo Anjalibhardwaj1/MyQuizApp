@@ -7,7 +7,7 @@
     <string name="Question_4_Heading">Question 4</string>
     <string name="Question_1_Body">Which of the following are languages supported by Android Studio? (Check all that apply)</string>
     <string name="Question_2_Body">True or False. Android is an open sourced operating system.</string>
-    <string name="Question_3_Body">Briefly, describe what you think of the Android Basics Course? (This is your opinion!) </string>
+    <string name="Question_3_Body">What is the most common string that new programmers first print out? (Hint: H_ _ _ _ W_ _ _ _)</string>
     <string name="Question_4_Body">What is the worst part about being a developer?</string>
     <string name="Question_1_Checkbox_1">Java</string>
     <string name="Question_1_Checkbox_2">Kotlin</string>

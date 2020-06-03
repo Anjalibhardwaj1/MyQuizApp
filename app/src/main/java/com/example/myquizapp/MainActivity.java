@@ -16,6 +16,7 @@ import android.widget.Toast;
  */
 
 public class MainActivity extends AppCompatActivity {
+    String answer = "Hello World";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,32 +37,40 @@ public class MainActivity extends AppCompatActivity {
         CheckBox kotlinCheckBox = findViewById(R.id.Kotlin_Option);
         boolean clickedKotlin = kotlinCheckBox.isChecked();
 
+        //Checks if C# Checkbox is Checked in Question 1
+        CheckBox csharpCheckBox = findViewById(R.id.C_Sharp_Option);
+        boolean clickedCSharp = csharpCheckBox.isChecked();
+
+        //Checks if python Checkbox is Checked in Question 1
+        CheckBox pythonCheckBox = findViewById(R.id.Python_Option);
+        boolean clickedPython = pythonCheckBox.isChecked();
+
         //Checks if True RadioButton is Checked in Question 2
         RadioButton trueButton = findViewById(R.id.True_Option);
         boolean clickedTrue = trueButton.isChecked();
 
-        //Checks if something is written in the text field in Question 3
+        //Gets what is written in the text field in Question 3 and converts to string
         EditText textField = findViewById(R.id.Text_Field);
-        boolean hasNotWritten = isEmpty(textField);
+        String userResult = textField.getText().toString();
 
         //Checks if Option 1 RadioButton is Checked in Question 4
         RadioButton optionOne = findViewById(R.id.Option_One_Button);
         boolean clickedOptionOne = optionOne.isChecked();
 
         //Sets the value returned from the totalPointsCalculated method to the points variable.
-        int points = totalPointsCalculated(clickedJava, clickedKotlin, clickedTrue, hasNotWritten, clickedOptionOne);
+        int points = totalPointsCalculated(clickedJava, clickedKotlin, clickedTrue, userResult, clickedOptionOne, clickedCSharp, clickedPython);
 
         //Shows the user their total points via toast message.
         Toast.makeText(getApplicationContext(), "You Scored: " + points + " out of 4 points", Toast.LENGTH_LONG).show();
 
         //Displays if you are wrong or right for question 1.
-        displayAnswerQOne(clickedJava, clickedKotlin);
+        displayAnswerQOne(clickedJava, clickedKotlin, clickedCSharp, clickedPython);
 
         //Displays if you are wrong or right for question 2.
         displayAnswerQTwo(clickedTrue);
 
         //Displays if you are wrong or right for question 3.
-        displayAnswerQThree(hasNotWritten);
+        displayAnswerQThree(userResult);
 
         //Displays if you are wrong or right for question 4.
         displayAnswerQFour(clickedOptionOne);
@@ -72,10 +81,10 @@ public class MainActivity extends AppCompatActivity {
      * This method calculates the total amount of correct answers.
      * @return total points scored as an integer
      */
-    private int totalPointsCalculated(boolean clickedJava, boolean clickedKotlin, boolean clickedTrue, boolean hasNotWritten, boolean clickedOptionOne){
+    private int totalPointsCalculated(boolean clickedJava, boolean clickedKotlin, boolean clickedTrue, String userResult, boolean clickedOptionOne, boolean clickedCSharp, boolean clickedPython){
         int points = 0;
 
-        if (clickedJava && clickedKotlin) {
+        if ((clickedJava && clickedKotlin) && (!(clickedCSharp) && !(clickedPython))) {
             points = points + 1;
         }
 
@@ -83,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
             points = points + 1;
         }
 
-        if (!hasNotWritten) {
+        if (userResult.equalsIgnoreCase(answer)) {
             points = points + 1;
         }
 
@@ -95,18 +104,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * This method checks if there are characters written on the text field.
-     * @return true if text field is empty, false if something is written in the text field.
-     */
-    private boolean isEmpty(EditText textField) {
-        return textField.getText().toString().trim().length() == 0;
-    }
-
-    /**
      * This method displays if the user is right or wrong for Question 1.
      */
-    public void displayAnswerQOne(boolean clickedJava, boolean clickedKotlin) {
-        if (clickedJava && clickedKotlin) {
+    public void displayAnswerQOne(boolean clickedJava, boolean clickedKotlin, boolean clickedCSharp, boolean clickedPython) {
+        if ((clickedJava && clickedKotlin) && (!(clickedCSharp) && !(clickedPython))) {
             TextView firstAnswer = findViewById(R.id.Answer_1);
             firstAnswer.setTextColor(Color.parseColor("#32CD32"));
             firstAnswer.setText(R.string.Right);
@@ -137,8 +138,8 @@ public class MainActivity extends AppCompatActivity {
     /**
      * This method displays if the user is right or wrong for Question 3.
      */
-    public void displayAnswerQThree(boolean hasNotWritten) {
-        if (!hasNotWritten) {
+    public void displayAnswerQThree(String userResult) {
+        if (userResult.equalsIgnoreCase(answer)) {
             TextView firstAnswer = findViewById(R.id.Answer_3);
             firstAnswer.setTextColor(Color.parseColor("#32CD32"));
             firstAnswer.setText(R.string.Right);
